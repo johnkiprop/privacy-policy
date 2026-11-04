@@ -1,0 +1,4 @@
+exclude:
+  - AGENTS.md
+  - _tools
+  - _locales

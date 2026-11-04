@@ -1,0 +1,99 @@
+{
+  "verified_on": "2026-11-04",
+  "source_repository": "C:\\playbox\\PrivacyWatchdog",
+  "source_head": "a32f59c3fcc0a95827fcff0a1739fa20c1d86a0d",
+  "method": "Read current working-tree source only. No device, traffic or private evidence was accessed. HEAD identifies the baseline, not a guarantee of a clean working tree.",
+  "scope": "Current Android Play implementation only; no experimental Gold or iOS parity inferred.",
+  "references": [
+    {
+      "claim": "DNS-only route, IPv6 bypass, DNS request capture; stored bytes are DNS request size, not app traffic volume.",
+      "paths": [
+        "app/src/main/java/com/privacywatchdog/capture/WatchdogVpnService.kt:133-141",
+        "app/src/main/java/com/privacywatchdog/capture/WatchdogVpnService.kt:421-455",
+        "app/src/main/java/com/privacywatchdog/capture/WatchdogVpnService.kt:519-532",
+        "app/src/main/java/com/privacywatchdog/capture/WatchdogVpnService.kt:610-615"
+      ]
+    },
+    {
+      "claim": "Allowed DNS requests leave the device through protected sockets to upstream resolvers; blocked DNS gets a local response. Network resolver discovery and fallback exist.",
+      "paths": [
+        "app/src/main/java/com/privacywatchdog/net/forward/DnsForwarder.kt:42-52",
+        "app/src/main/java/com/privacywatchdog/net/forward/DnsForwarder.kt:61-89",
+        "app/src/main/java/com/privacywatchdog/capture/WatchdogVpnService.kt:178-193",
+        "app/src/main/java/com/privacywatchdog/capture/WatchdogVpnService.kt:610-615"
+      ]
+    },
+    {
+      "claim": "Optional Usage Access and unknown screen-state handling; no proof that a tracker fired.",
+      "paths": [
+        "app/src/main/java/com/privacywatchdog/capture/ForegroundMonitor.kt:69-82",
+        "app/src/main/java/com/privacywatchdog/data/Entities.kt:29-46"
+      ]
+    },
+    {
+      "claim": "Local storage includes DNS observations, attribution and notes. Data-model comments mentioning SNI and total byte-like fields are not evidence of current Play all-traffic capture.",
+      "paths": [
+        "app/src/main/java/com/privacywatchdog/data/Entities.kt:29-46",
+        "app/src/main/java/com/privacywatchdog/data/FlowDao.kt:12-30",
+        "app/src/main/java/com/privacywatchdog/capture/WatchdogVpnService.kt:444-449"
+      ]
+    },
+    {
+      "claim": "Retention windows, row cap and latest-per-app sampling exception; cleanup on launch and during monitoring; aggregates persist until explicit erasure.",
+      "paths": [
+        "app/src/main/java/com/privacywatchdog/data/Retention.kt:8-27",
+        "app/src/main/java/com/privacywatchdog/data/FlowDao.kt:54-56",
+        "app/src/main/java/com/privacywatchdog/data/FlowDao.kt:81-96",
+        "app/src/main/java/com/privacywatchdog/ui/DashboardViewModel.kt:278-301",
+        "app/src/main/java/com/privacywatchdog/capture/WatchdogVpnService.kt:287-298"
+      ]
+    },
+    {
+      "claim": "Erase history preserves active choices/dismissals; reset also clears rules, dismissals and Play address rules; caches/questions cleared. These controls are not a full Android settings reset.",
+      "paths": [
+        "app/src/main/java/com/privacywatchdog/data/FlowDao.kt:730-770",
+        "app/src/main/java/com/privacywatchdog/ui/DashboardViewModel.kt:308-355"
+      ]
+    },
+    {
+      "claim": "Explicit confirmed browser search sends selected main domain to DuckDuckGo; copying places full selected host on OS clipboard.",
+      "paths": [
+        "app/src/main/java/com/privacywatchdog/ui/AddressSearch.kt:7-18",
+        "app/src/main/java/com/privacywatchdog/ui/ServiceAddressControls.kt:50-76",
+        "app/src/main/java/com/privacywatchdog/ui/ServiceAddressControls.kt:101-107"
+      ]
+    },
+    {
+      "claim": "Feedback email may prefill app/Android version and device manufacturer/model; company privacy requests open email or external privacy page; Google Play review flow is present.",
+      "paths": [
+        "app/src/main/java/com/privacywatchdog/ui/MainActivity.kt:226-235",
+        "app/src/main/java/com/privacywatchdog/ui/MainActivity.kt:238-251",
+        "app/src/main/java/com/privacywatchdog/ui/MainActivity.kt:259-278",
+        "app/build.gradle.kts:140-191"
+      ]
+    },
+    {
+      "claim": "Backup disabled; extraction exclusions cover app root for cloud backup and transfer.",
+      "paths": [
+        "app/src/main/AndroidManifest.xml:57-61",
+        "app/src/main/res/xml/data_extraction_rules.xml:2-9"
+      ]
+    },
+    {
+      "claim": "Notifications created locally; immediate anomaly notifications are not a Play feature. Reports/questions select device-side engines.",
+      "paths": [
+        "app/src/main/java/com/privacywatchdog/capture/WatchdogVpnService.kt:307-309",
+        "app/src/main/java/com/privacywatchdog/capture/WatchdogVpnService.kt:563-574",
+        "app/src/main/java/com/privacywatchdog/policy/DistributionPolicy.kt:24-28",
+        "app/src/main/java/com/privacywatchdog/agent/PrivacyAgentFactory.kt:30-64"
+      ]
+    }
+  ],
+  "limits": [
+    "No subscriptions, app accounts or developer analytics backend were verified. Do not invent billing or account processing.",
+    "Source inspection is not a network audit, release-binary attestation or screen-reader evaluation.",
+    "GitHub Pages is an external host: browser requests and host processing are distinct from app-local processing. No hosting retention assurances are made.",
+    "All policy text awaits owner/legal review; all non-English translations also await native-speaker review. No legal precedence is assigned.",
+    "No commit, push or deployment was performed."
+  ]
+}
